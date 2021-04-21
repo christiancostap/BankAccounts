@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import { accountsRouter } from './routes/accounts.js';
 
-//Db connection through mongoose
+//Db connection through mongoose.
 mongoose.connect(
   '<Rota para conexão>',
   { useNewUrlParser: true, useUnifiedTopology: true }
