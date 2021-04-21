@@ -1,10 +1,13 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import { accountsRouter } from './routes/accounts.js';
+import dotenv from 'dotenv';
 
-//Db connection through mongoose.
+dotenv.config();
+
+//Db connection through mongoose
 mongoose.connect(
-  '<Rota para conexão>',
+  `mongodb+srv://${process.env.USERDB}:${process.env.PWDDB}@cluster0.przra.mongodb.net/trabalhoPratico?retryWrites=true&w=majority`,
   { useNewUrlParser: true, useUnifiedTopology: true }
 ).catch((err) => console.log('Erro ao tentar conectar: ' + err));
 
@@ -14,4 +17,4 @@ app.use(express.json());
 app.use('/accounts', accountsRouter)
 
 
-app.listen(3000, () => console.log('API iniciada'))
+app.listen(process.env.PORT, () => console.log('API iniciada'))
